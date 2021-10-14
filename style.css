@@ -1,0 +1,13 @@
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    background-color: mediumslateblue;
+    height: 500px;
+    width: 500px;
+}
+
+.grid-item {
+    background-color: mediumspringgreen;
+}
