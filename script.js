@@ -1,11 +1,18 @@
-function createGridElements() {
-    let container = document.querySelector('.container');
+let container = document.querySelector('.container');
 
-    for (let i = 0; i < 256; i++) {
-        let gridDiv = document.createElement('div');
-        gridDiv.classList.add('grid-item');
-        container.appendChild(gridDiv);
-    }
+for (let i = 0; i < 256; i++) {
+    let gridDiv = document.createElement('div');
+    gridDiv.classList.add('grid-item');
+    container.appendChild(gridDiv);
 }
 
-window.onload = createGridElements;
+const gridItems = document.querySelectorAll('.grid-item');
+
+
+gridItems.forEach((gridItem) => {
+
+    gridItem.addEventListener('mouseover', () => {
+        gridItem.classList.add('color');
+    });
+    
+});
