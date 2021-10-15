@@ -1,11 +1,23 @@
 .container {
-    margin: auto;
+    margin: 50px auto;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     background-color: white;
     height: 960px;
     width: 960px;
     border: 16px solid black;
+    border-radius: 25px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background-color: white;
+    padding: 15px;
+    border-radius: 25px;
 }
 
 .grid-item {
