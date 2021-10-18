@@ -7,14 +7,18 @@ for (let i = 0; i < 256; i++) {
     container.appendChild(gridDiv);
 }
 
+
+
 // Declared with let as size will change later if user alters resolution
 let gridItems = document.querySelectorAll('.grid-item');
 
 gridItems.forEach((gridItem) => {
     gridItem.addEventListener('mouseover', () => {
-        gridItem.classList.add('color');
+            gridItem.classList.add('color');
     });
 });
+
+
 
 const resetButton = document.querySelector('button');
 
@@ -43,14 +47,15 @@ function changeResolution(resolution) {
 
     gridItems = document.querySelectorAll('.grid-item');
 
+    // Need to reset event listener, given removal and addition of new divs
     gridItems.forEach((gridItem) => {
         gridItem.addEventListener('mouseover', () => {
             gridItem.classList.add('color');
         });
-    });
-    
+    });  
 }
 
+// Event Listener to clear and resize the drawing panel
 resetButton.addEventListener('click', () => {
     clearGrid();
 
@@ -58,8 +63,6 @@ resetButton.addEventListener('click', () => {
 
     while (true) {
         resolution = prompt('Number of squares per side of new grid? (Max: 100)');
-    
-        console.log(resolution);
 
         if (resolution <= 100 && resolution > 0 && resolution != false) {
             resolution = parseInt(resolution)
