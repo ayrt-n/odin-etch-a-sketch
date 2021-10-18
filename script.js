@@ -1,4 +1,4 @@
-let container = document.querySelector('.container');
+const container = document.querySelector('.container');
 
 // Initialize default HTML container with 16x16 grid
 for (let i = 0; i < 256; i++) {
@@ -14,13 +14,13 @@ let gridItems = document.querySelectorAll('.grid-item');
 
 gridItems.forEach((gridItem) => {
     gridItem.addEventListener('mouseover', () => {
-            gridItem.classList.add('color');
+            gridItem.style.backgroundColor = color;
     });
 });
 
 
 
-const resetButton = document.querySelector('button');
+const resetButton = document.querySelector('.reset');
 
 // Unsure whether iterating through all gridItems or initializing new nodelist
 // with just colored pixels is faster way of selecting and clearing grid
@@ -50,7 +50,7 @@ function changeResolution(resolution) {
     // Need to reset event listener, given removal and addition of new divs
     gridItems.forEach((gridItem) => {
         gridItem.addEventListener('mouseover', () => {
-            gridItem.classList.add('color');
+            gridItem.style.backgroundColor = color;
         });
     });  
 }
@@ -78,3 +78,16 @@ resetButton.addEventListener('click', () => {
     changeResolution(resolution);
 
 })
+
+
+
+// Listener to track color picker input
+const colorPicker = document.querySelector('#color-picker');
+let color = colorPicker.value; // Default value black
+
+colorPicker.addEventListener('change', watchColorPicker);
+
+function watchColorPicker() {
+    color = colorPicker.value;
+    console.log(color);
+}
