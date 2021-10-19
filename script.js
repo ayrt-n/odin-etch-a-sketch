@@ -14,7 +14,23 @@ let gridItems = document.querySelectorAll('.grid-item');
 
 gridItems.forEach((gridItem) => {
     gridItem.addEventListener('mouseover', () => {
-            gridItem.style.backgroundColor = color;
+        switch (activeMode) {
+            case 'pen':
+                gridItem.style.backgroundColor = color;
+                break;
+            
+            case 'eraser':
+                gridItem.style.backgroundColor = '#FFFFFF';
+                break;
+
+            case 'rainbow':
+                gridItem.style.backgroundColor = randomColor();
+                break;
+
+            default:
+                gridItem.style.backgroundColor = color;
+                break;
+        }
     });
 });
 
@@ -50,9 +66,25 @@ function changeResolution(resolution) {
     // Need to reset event listener, given removal and addition of new divs
     gridItems.forEach((gridItem) => {
         gridItem.addEventListener('mouseover', () => {
-            gridItem.style.backgroundColor = color;
+            switch (activeMode) {
+                case 'pen':
+                    gridItem.style.backgroundColor = color;
+                    break;
+                
+                case 'eraser':
+                    gridItem.style.backgroundColor = '#FFFFFF';
+                    break;
+    
+                case 'rainbow':
+                    gridItem.style.backgroundColor = randomColor();
+                    break;
+    
+                default:
+                    gridItem.style.backgroundColor = color;
+                    break;
+            }
         });
-    });  
+    });    
 }
 
 // Event Listener to clear and resize the drawing panel
@@ -89,5 +121,42 @@ colorPicker.addEventListener('change', watchColorPicker);
 
 function watchColorPicker() {
     color = colorPicker.value;
-    console.log(color);
+    activeMode = 'pen';
+    unclickButtons();
+    penButton.style.backgroundColor = '#303030';
+    penButton.style.color = '#FFFFFF';
+}
+
+
+
+// Rainbow function will calculate random color 
+//(https://css-tricks.com/snippets/javascript/random-hex-color/)
+function randomColor() {
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
+
+
+const modeButtons = document.querySelectorAll('.selectable');
+let activeMode = 'pen';
+const penButton = document.querySelector('#pen');
+
+modeButtons.forEach((btn) => {
+    btn.addEventListener('click', function(e) {
+            activeMode = e.target.value;
+            unclickButtons();
+            btn.style.backgroundColor = '#303030';
+            btn.style.color = '#FFFFFF'
+        });
+});
+
+function unclickButtons() {
+    modeButtons.forEach((btn) => {
+        btn.style.backgroundColor = 'white';
+        btn.style.color = '#000000'
+    });
+}
+
+function clickButton() {
+
 }

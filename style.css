@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     margin: 0px auto;
-    max-width: 1100px;
 }
 
 .container {
@@ -31,12 +30,16 @@ button {
     padding: 15px;
     width: 100px;
     height: 75px;
+    border: 2px solid black;
     border-radius: 25px;
+    font-weight: 700;
 }
 
 button.reset {
     width: 100x;
     height: 50px;
+    text-align: center;
+    padding: 10px;
 }
 
 #color-picker {
@@ -47,4 +50,3 @@ button.reset {
 .grid-item {
     background-color: white;
 }
-
