@@ -38,15 +38,6 @@ gridItems.forEach((gridItem) => {
 
 const resetButton = document.querySelector('.reset');
 
-// Unsure whether iterating through all gridItems or initializing new nodelist
-// with just colored pixels is faster way of selecting and clearing grid
-function clearGrid() {
-    let colorPixels = document.querySelectorAll('.color');
-    colorPixels.forEach((pixel) => {
-        pixel.classList.remove('color');
-    });
-}
-
 function changeResolution(resolution) {
     if (resolution == gridItems.length) {
         return; // If equal, no need to change grid size
@@ -89,8 +80,6 @@ function changeResolution(resolution) {
 
 // Event Listener to clear and resize the drawing panel
 resetButton.addEventListener('click', () => {
-    clearGrid();
-
     let resolution;
 
     while (true) {
